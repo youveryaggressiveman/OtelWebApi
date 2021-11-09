@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище OtelModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AddressOfOtel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryOfOtelID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HashCode" Type="int" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+    <Property Name="PassportID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CountryOfOtel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Date">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArrivalDate" Type="date" Nullable="false" />
+    <Property Name="CountyDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NameOtel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Otel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NameOtelID" Type="int" Nullable="false" />
+    <Property Name="RoomID" Type="int" Nullable="false" />
+    <Property Name="AddressOfOtelID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OtelOfClient">
+    <Key>
+      <PropertyRef Name="ClientID" />
+      <PropertyRef Name="OtelID" />
+    </Key>
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="OtelID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Passport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PassportSerial" Type="int" Nullable="false" />
+    <Property Name="PassportNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="ValueID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RomOfDate">
+    <Key>
+      <PropertyRef Name="DateID" />
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="DateID" Type="int" Nullable="false" />
+    <Property Name="RoomID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeRoomID" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="PriceID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeRoom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Value">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__AddressOf__Count__35BCFE0A">
+    <End Role="CountryOfOtel" Type="Self.CountryOfOtel" Multiplicity="1" />
+    <End Role="AddressOfOtel" Type="Self.AddressOfOtel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryOfOtel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AddressOfOtel">
+        <PropertyRef Name="CountryOfOtelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Card__ClientID__30F848ED">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client__CountryI__2C3393D0">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client__Passport__2D27B809">
+    <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passport">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="PassportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client__RoleID__2E1BDC42">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Otel__AddressOfO__412EB0B6">
+    <End Role="AddressOfOtel" Type="Self.AddressOfOtel" Multiplicity="1" />
+    <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddressOfOtel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Otel">
+        <PropertyRef Name="AddressOfOtelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Otel__RoomID__403A8C7D">
+    <End Role="Room" Type="Self.Room" Multiplicity="1" />
+    <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Otel">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OtelOfCli__Clien__440B1D61">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="OtelOfClient" Type="Self.OtelOfClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OtelOfClient">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OtelOfCli__OtelI__44FF419A">
+    <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
+    <End Role="OtelOfClient" Type="Self.OtelOfClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OtelOfClient">
+        <PropertyRef Name="OtelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Price__ValueID__3A81B327">
+    <End Role="Value" Type="Self.Value" Multiplicity="1" />
+    <End Role="Price" Type="Self.Price" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Value">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Price">
+        <PropertyRef Name="ValueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RomOfDate__DateI__47DBAE45">
+    <End Role="Date" Type="Self.Date" Multiplicity="1" />
+    <End Role="RomOfDate" Type="Self.RomOfDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Date">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RomOfDate">
+        <PropertyRef Name="DateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RomOfDate__RoomI__48CFD27E">
+    <End Role="Room" Type="Self.Room" Multiplicity="1" />
+    <End Role="RomOfDate" Type="Self.RomOfDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RomOfDate">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Room__PriceID__3D5E1FD2">
+    <End Role="Price" Type="Self.Price" Multiplicity="1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Price">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="PriceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Otel_NameOtel">
+    <End Role="NameOtel" Type="Self.NameOtel" Multiplicity="1" />
+    <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NameOtel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Otel">
+        <PropertyRef Name="NameOtelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Room_TypeRoom">
+    <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="TypeRoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище OtelModelContainer">
+    <EntitySet Name="AddressOfOtel" EntityType="Self.AddressOfOtel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CountryOfOtel" EntityType="Self.CountryOfOtel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Date" EntityType="Self.Date" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NameOtel" EntityType="Self.NameOtel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Otel" EntityType="Self.Otel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OtelOfClient" EntityType="Self.OtelOfClient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RomOfDate" EntityType="Self.RomOfDate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeRoom" EntityType="Self.TypeRoom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Value" EntityType="Self.Value" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__AddressOf__Count__35BCFE0A" Association="Self.FK__AddressOf__Count__35BCFE0A">
+      <End Role="CountryOfOtel" EntitySet="CountryOfOtel" />
+      <End Role="AddressOfOtel" EntitySet="AddressOfOtel" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Card__ClientID__30F848ED" Association="Self.FK__Card__ClientID__30F848ED">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Card" EntitySet="Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client__CountryI__2C3393D0" Association="Self.FK__Client__CountryI__2C3393D0">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client__Passport__2D27B809" Association="Self.FK__Client__Passport__2D27B809">
+      <End Role="Passport" EntitySet="Passport" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client__RoleID__2E1BDC42" Association="Self.FK__Client__RoleID__2E1BDC42">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Otel__AddressOfO__412EB0B6" Association="Self.FK__Otel__AddressOfO__412EB0B6">
+      <End Role="AddressOfOtel" EntitySet="AddressOfOtel" />
+      <End Role="Otel" EntitySet="Otel" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Otel__RoomID__403A8C7D" Association="Self.FK__Otel__RoomID__403A8C7D">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="Otel" EntitySet="Otel" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OtelOfCli__Clien__440B1D61" Association="Self.FK__OtelOfCli__Clien__440B1D61">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="OtelOfClient" EntitySet="OtelOfClient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OtelOfCli__OtelI__44FF419A" Association="Self.FK__OtelOfCli__OtelI__44FF419A">
+      <End Role="Otel" EntitySet="Otel" />
+      <End Role="OtelOfClient" EntitySet="OtelOfClient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Price__ValueID__3A81B327" Association="Self.FK__Price__ValueID__3A81B327">
+      <End Role="Value" EntitySet="Value" />
+      <End Role="Price" EntitySet="Price" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RomOfDate__DateI__47DBAE45" Association="Self.FK__RomOfDate__DateI__47DBAE45">
+      <End Role="Date" EntitySet="Date" />
+      <End Role="RomOfDate" EntitySet="RomOfDate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RomOfDate__RoomI__48CFD27E" Association="Self.FK__RomOfDate__RoomI__48CFD27E">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="RomOfDate" EntitySet="RomOfDate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Room__PriceID__3D5E1FD2" Association="Self.FK__Room__PriceID__3D5E1FD2">
+      <End Role="Price" EntitySet="Price" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Otel_NameOtel" Association="Self.FK_Otel_NameOtel">
+      <End Role="NameOtel" EntitySet="NameOtel" />
+      <End Role="Otel" EntitySet="Otel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Room_TypeRoom" Association="Self.FK_Room_TypeRoom">
+      <End Role="TypeRoom" EntitySet="TypeRoom" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

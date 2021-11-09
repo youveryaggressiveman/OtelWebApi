@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище OtelModelContainer" CdmEntityContainer="OtelEntities">
+    <EntitySetMapping Name="AddressOfOtel">
+      <EntityTypeMapping TypeName="OtelModel.AddressOfOtel">
+        <MappingFragment StoreEntitySet="AddressOfOtel">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CountryOfOtelID" ColumnName="CountryOfOtelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Card">
+      <EntityTypeMapping TypeName="OtelModel.Card">
+        <MappingFragment StoreEntitySet="Card">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HashCode" ColumnName="HashCode" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="OtelModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="OtelModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountryOfOtel">
+      <EntityTypeMapping TypeName="OtelModel.CountryOfOtel">
+        <MappingFragment StoreEntitySet="CountryOfOtel">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Date">
+      <EntityTypeMapping TypeName="OtelModel.Date">
+        <MappingFragment StoreEntitySet="Date">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="CountyDate" ColumnName="CountyDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NameOtel">
+      <EntityTypeMapping TypeName="OtelModel.NameOtel">
+        <MappingFragment StoreEntitySet="NameOtel">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otel">
+      <EntityTypeMapping TypeName="OtelModel.Otel">
+        <MappingFragment StoreEntitySet="Otel">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameOtelID" ColumnName="NameOtelID" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="AddressOfOtelID" ColumnName="AddressOfOtelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passport">
+      <EntityTypeMapping TypeName="OtelModel.Passport">
+        <MappingFragment StoreEntitySet="Passport">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PassportSerial" ColumnName="PassportSerial" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Price">
+      <EntityTypeMapping TypeName="OtelModel.Price">
+        <MappingFragment StoreEntitySet="Price">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="ValueID" ColumnName="ValueID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="OtelModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Room">
+      <EntityTypeMapping TypeName="OtelModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TypeRoomID" ColumnName="TypeRoomID" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="PriceID" ColumnName="PriceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeRoom">
+      <EntityTypeMapping TypeName="OtelModel.TypeRoom">
+        <MappingFragment StoreEntitySet="TypeRoom">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Value">
+      <EntityTypeMapping TypeName="OtelModel.Value">
+        <MappingFragment StoreEntitySet="Value">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="OtelOfClient" TypeName="OtelModel.OtelOfClient" StoreEntitySet="OtelOfClient">
+      <EndProperty Name="Client">
+        <ScalarProperty Name="ID" ColumnName="ClientID" />
+      </EndProperty>
+      <EndProperty Name="Otel">
+        <ScalarProperty Name="ID" ColumnName="OtelID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RomOfDate" TypeName="OtelModel.RomOfDate" StoreEntitySet="RomOfDate">
+      <EndProperty Name="Date">
+        <ScalarProperty Name="ID" ColumnName="DateID" />
+      </EndProperty>
+      <EndProperty Name="Room">
+        <ScalarProperty Name="ID" ColumnName="RoomID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

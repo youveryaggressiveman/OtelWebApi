@@ -1,0 +1,129 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Description;
+using OtelApi.GlobalEntity;
+
+namespace OtelApi.Controllers
+{
+    public class PricesController : ApiController
+    {
+        private OtelEntities db = new OtelEntities();
+
+        // GET: api/Prices
+        public IQueryable<Price> GetPrice()
+        {
+            return db.Price;
+        }
+
+        [Route("api/Prices/roomId")]
+        [ResponseType(typeof(Price))]
+        public IQueryable<Price> GetPriceByRoomId(int id)
+        {
+            var result = (from c in db.Price
+                          join o in db.Room on c.ID equals o.PriceID
+                          where o.ID == id
+                          select c).Distinct();
+            return result;
+        }
+
+        // GET: api/Prices/5
+        [ResponseType(typeof(Price))]
+        public IHttpActionResult GetPrice(int id)
+        {
+            Price price = db.Price.Find(id);
+            if (price == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(price);
+        }
+
+        // PUT: api/Prices/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutPrice(int id, Price price)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != price.ID)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(price).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PriceExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/Prices
+        [ResponseType(typeof(Price))]
+        public IHttpActionResult PostPrice(Price price)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Price.Add(price);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = price.ID }, price);
+        }
+
+        // DELETE: api/Prices/5
+        [ResponseType(typeof(Price))]
+        public IHttpActionResult DeletePrice(int id)
+        {
+            Price price = db.Price.Find(id);
+            if (price == null)
+            {
+                return NotFound();
+            }
+
+            db.Price.Remove(price);
+            db.SaveChanges();
+
+            return Ok(price);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool PriceExists(int id)
+        {
+            return db.Price.Count(e => e.ID == id) > 0;
+        }
+    }
+}
