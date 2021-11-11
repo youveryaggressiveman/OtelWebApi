@@ -9,6 +9,7 @@
 
 namespace OtelApi.GlobalEntity
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -18,6 +19,7 @@ namespace OtelApi.GlobalEntity
         public int HashCode { get; set; }
         public int ClientID { get; set; }
     
+        [JsonIgnore]
         public virtual Client Client { get; set; }
     }
 }
