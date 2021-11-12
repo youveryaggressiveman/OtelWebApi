@@ -80,22 +80,7 @@ namespace OtelApi.Controllers
             }
 
             db.ImageOfOtel.Add(imageOfOtel);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (ImageOfOtelExists(imageOfOtel.ID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = imageOfOtel.ID }, imageOfOtel);
         }

@@ -12,44 +12,44 @@ using OtelApi.GlobalEntity;
 
 namespace OtelApi.Controllers
 {
-    public class TicketsController : ApiController
+    public class DiscountsController : ApiController
     {
         private OtelEntities db = new OtelEntities();
 
-        // GET: api/Tickets
-        public IQueryable<Ticket> GetTicket()
+        // GET: api/Discounts
+        public IQueryable<Discount> GetDiscount()
         {
-            return db.Ticket;
+            return db.Discount;
         }
 
-        // GET: api/Tickets/5
-        [ResponseType(typeof(Ticket))]
-        public IHttpActionResult GetTicket(int id)
+        // GET: api/Discounts/5
+        [ResponseType(typeof(Discount))]
+        public IHttpActionResult GetDiscount(int id)
         {
-            Ticket ticket = db.Ticket.Find(id);
-            if (ticket == null)
+            Discount discount = db.Discount.Find(id);
+            if (discount == null)
             {
                 return NotFound();
             }
 
-            return Ok(ticket);
+            return Ok(discount);
         }
 
-        // PUT: api/Tickets/5
+        // PUT: api/Discounts/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTicket(int id, Ticket ticket)
+        public IHttpActionResult PutDiscount(int id, Discount discount)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != ticket.ID)
+            if (id != discount.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(ticket).State = EntityState.Modified;
+            db.Entry(discount).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace OtelApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TicketExists(id))
+                if (!DiscountExists(id))
                 {
                     return NotFound();
                 }
@@ -70,16 +70,16 @@ namespace OtelApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Tickets
-        [ResponseType(typeof(Ticket))]
-        public IHttpActionResult PostTicket(Ticket ticket)
+        // POST: api/Discounts
+        [ResponseType(typeof(Discount))]
+        public IHttpActionResult PostDiscount(Discount discount)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Ticket.Add(ticket);
+            db.Discount.Add(discount);
 
             try
             {
@@ -87,7 +87,7 @@ namespace OtelApi.Controllers
             }
             catch (DbUpdateException)
             {
-                if (TicketExists(ticket.ID))
+                if (DiscountExists(discount.ID))
                 {
                     return Conflict();
                 }
@@ -97,23 +97,23 @@ namespace OtelApi.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = ticket.ID }, ticket);
+            return CreatedAtRoute("DefaultApi", new { id = discount.ID }, discount);
         }
 
-        // DELETE: api/Tickets/5
-        [ResponseType(typeof(Ticket))]
-        public IHttpActionResult DeleteTicket(int id)
+        // DELETE: api/Discounts/5
+        [ResponseType(typeof(Discount))]
+        public IHttpActionResult DeleteDiscount(int id)
         {
-            Ticket ticket = db.Ticket.Find(id);
-            if (ticket == null)
+            Discount discount = db.Discount.Find(id);
+            if (discount == null)
             {
                 return NotFound();
             }
 
-            db.Ticket.Remove(ticket);
+            db.Discount.Remove(discount);
             db.SaveChanges();
 
-            return Ok(ticket);
+            return Ok(discount);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +125,9 @@ namespace OtelApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool TicketExists(int id)
+        private bool DiscountExists(int id)
         {
-            return db.Ticket.Count(e => e.ID == id) > 0;
+            return db.Discount.Count(e => e.ID == id) > 0;
         }
     }
 }

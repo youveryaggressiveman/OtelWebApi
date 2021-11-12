@@ -22,13 +22,6 @@ namespace OtelApi.Controllers
             return db.Passport;
         }
 
-        [Route("api/serial")]
-        [ResponseType(typeof(Passport))]
-        public IQueryable<Passport> GetPassportByNumber(string serial)
-        {
-            return db.Passport.Where(e => e.PassportSerial == serial);
-        }
-
         // GET: api/Passports/5
         [ResponseType(typeof(Passport))]
         public IHttpActionResult GetPassport(int id)
@@ -81,24 +74,6 @@ namespace OtelApi.Controllers
         [ResponseType(typeof(Passport))]
         public IHttpActionResult PostPassport(Passport passport)
         {
-            if(passport != null)
-            {
-                if (passport.PassportSerial == null)
-                {
-                    ModelState.AddModelError("Passport", "Серия паспорта не может быть пустой");
-                }
-
-                if (passport.PassportNumber == null)
-                {
-                    ModelState.AddModelError("Passport", "Номер пасопрта не может быть пустым");
-                }
-
-            }
-            else
-            {
-                ModelState.AddModelError("Passport", "Паспорт передан с ошибкой");
-            }
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

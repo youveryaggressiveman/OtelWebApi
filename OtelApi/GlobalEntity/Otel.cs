@@ -18,33 +18,23 @@ namespace OtelApi.GlobalEntity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Otel()
         {
-            this.Ticket = new HashSet<Ticket>();
-            this.Client = new HashSet<Client>();
+            this.ImageOfOtel = new HashSet<ImageOfOtel>();
+            this.Order = new HashSet<Order>();
             this.Room = new HashSet<Room>();
         }
     
         public int ID { get; set; }
-        public int NameOtelID { get; set; }
+        public string Name { get; set; }
         public int AddressOfOtelID { get; set; }
-        public int ImageID { get; set; }
-        public Nullable<int> DiscriptionID { get; set; }
+        public int DiscriptionID { get; set; }
 
-        [JsonIgnore]
         public virtual AddressOfOtel AddressOfOtel { get; set; }
-        [JsonIgnore]
         public virtual Discription Discription { get; set; }
-        [JsonIgnore]
-        public virtual ImageOfOtel ImageOfOtel { get; set; }
-        [JsonIgnore]
-        public virtual NameOtel NameOtel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
-        public virtual ICollection<Ticket> Ticket { get; set; }
+        public virtual ICollection<ImageOfOtel> ImageOfOtel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
-        public virtual ICollection<Client> Client { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
         public virtual ICollection<Room> Room { get; set; }
     }
 }

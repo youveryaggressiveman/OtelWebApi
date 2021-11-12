@@ -13,12 +13,12 @@ namespace OtelApi.GlobalEntity
     using System;
     using System.Collections.Generic;
     
-    public partial class NameOtel
+    public partial class Currency
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NameOtel()
+        public Currency()
         {
-            this.Otel = new HashSet<Otel>();
+            this.Price = new HashSet<Price>();
         }
     
         public int ID { get; set; }
@@ -26,6 +26,6 @@ namespace OtelApi.GlobalEntity
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
-        public virtual ICollection<Otel> Otel { get; set; }
+        public virtual ICollection<Price> Price { get; set; }
     }
 }

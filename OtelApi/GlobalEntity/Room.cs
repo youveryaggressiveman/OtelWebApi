@@ -18,9 +18,8 @@ namespace OtelApi.GlobalEntity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Room()
         {
-            this.Date = new HashSet<Date>();
             this.Otel = new HashSet<Otel>();
-            this.Ticket = new HashSet<Ticket>();
+            this.Order = new HashSet<Order>();
         }
     
         public int ID { get; set; }
@@ -28,18 +27,14 @@ namespace OtelApi.GlobalEntity
         public int Number { get; set; }
         public int PriceID { get; set; }
 
-        [JsonIgnore]
         public virtual Price Price { get; set; }
         [JsonIgnore]
         public virtual TypeRoom TypeRoom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
-        public virtual ICollection<Date> Date { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
         public virtual ICollection<Otel> Otel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
-        public virtual ICollection<Ticket> Ticket { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

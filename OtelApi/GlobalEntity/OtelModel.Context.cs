@@ -27,19 +27,18 @@ namespace OtelApi.GlobalEntity
     
         public virtual DbSet<AddressOfOtel> AddressOfOtel { get; set; }
         public virtual DbSet<Card> Card { get; set; }
-        public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<Country> Country { get; set; }
-        public virtual DbSet<Date> Date { get; set; }
+        public virtual DbSet<Currency> Currency { get; set; }
+        public virtual DbSet<Discount> Discount { get; set; }
         public virtual DbSet<Discription> Discription { get; set; }
         public virtual DbSet<ImageOfOtel> ImageOfOtel { get; set; }
-        public virtual DbSet<NameOtel> NameOtel { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Otel> Otel { get; set; }
         public virtual DbSet<Passport> Passport { get; set; }
         public virtual DbSet<Price> Price { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Room> Room { get; set; }
-        public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<TypeRoom> TypeRoom { get; set; }
-        public virtual DbSet<Value> Value { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

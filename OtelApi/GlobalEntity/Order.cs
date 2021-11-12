@@ -13,19 +13,25 @@ namespace OtelApi.GlobalEntity
     using System;
     using System.Collections.Generic;
     
-    public partial class Value
+    public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Value()
+        public Order()
         {
-            this.Price = new HashSet<Price>();
+            this.Room = new HashSet<Room>();
         }
     
         public int ID { get; set; }
-        public string Name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public int ClientID { get; set; }
+        public int OtelID { get; set; }
+        public System.DateTime ArrivalDate { get; set; }
+        public System.DateTime DepartureDate { get; set; }
+
         [JsonIgnore]
-        public virtual ICollection<Price> Price { get; set; }
+        public virtual User User { get; set; }
+        [JsonIgnore]
+        public virtual Otel Otel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Room> Room { get; set; }
     }
 }

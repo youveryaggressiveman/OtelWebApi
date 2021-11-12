@@ -17,21 +17,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="HashCode" ColumnName="HashCode" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Client">
-      <EntityTypeMapping TypeName="OtelModel.Client">
-        <MappingFragment StoreEntitySet="Client">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-          <ScalarProperty Name="PassportID" ColumnName="PassportID" />
-          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="LastFourDigits" ColumnName="LastFourDigits" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -43,12 +29,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Date">
-      <EntityTypeMapping TypeName="OtelModel.Date">
-        <MappingFragment StoreEntitySet="Date">
+    <EntitySetMapping Name="Currency">
+      <EntityTypeMapping TypeName="OtelModel.Currency">
+        <MappingFragment StoreEntitySet="Currency">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
-          <ScalarProperty Name="CountyDate" ColumnName="CountyDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Discount">
+      <EntityTypeMapping TypeName="OtelModel.Discount">
+        <MappingFragment StoreEntitySet="Discount">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -65,14 +58,18 @@
         <MappingFragment StoreEntitySet="ImageOfOtel">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="OtelID" ColumnName="OtelID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NameOtel">
-      <EntityTypeMapping TypeName="OtelModel.NameOtel">
-        <MappingFragment StoreEntitySet="NameOtel">
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="OtelModel.Order">
+        <MappingFragment StoreEntitySet="Order">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="OtelID" ColumnName="OtelID" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -80,9 +77,8 @@
       <EntityTypeMapping TypeName="OtelModel.Otel">
         <MappingFragment StoreEntitySet="Otel">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NameOtelID" ColumnName="NameOtelID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="AddressOfOtelID" ColumnName="AddressOfOtelID" />
-          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
           <ScalarProperty Name="DiscriptionID" ColumnName="DiscriptionID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -101,7 +97,7 @@
         <MappingFragment StoreEntitySet="Price">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="ValueID" ColumnName="ValueID" />
+          <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -123,15 +119,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Ticket">
-      <EntityTypeMapping TypeName="OtelModel.Ticket">
-        <MappingFragment StoreEntitySet="Ticket">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
-          <ScalarProperty Name="OtelID" ColumnName="OtelID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TypeRoom">
       <EntityTypeMapping TypeName="OtelModel.TypeRoom">
         <MappingFragment StoreEntitySet="TypeRoom">
@@ -140,30 +127,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Value">
-      <EntityTypeMapping TypeName="OtelModel.Value">
-        <MappingFragment StoreEntitySet="Value">
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="OtelModel.User">
+        <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="OtelOfClient" TypeName="OtelModel.OtelOfClient" StoreEntitySet="OtelOfClient">
-      <EndProperty Name="Client">
-        <ScalarProperty Name="ID" ColumnName="ClientID" />
-      </EndProperty>
-      <EndProperty Name="Otel">
-        <ScalarProperty Name="ID" ColumnName="OtelID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="RomOfDate" TypeName="OtelModel.RomOfDate" StoreEntitySet="RomOfDate">
-      <EndProperty Name="Date">
-        <ScalarProperty Name="ID" ColumnName="DateID" />
-      </EndProperty>
-      <EndProperty Name="Room">
-        <ScalarProperty Name="ID" ColumnName="RoomID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="RoomOfOtel" TypeName="OtelModel.RoomOfOtel" StoreEntitySet="RoomOfOtel">
       <EndProperty Name="Otel">
         <ScalarProperty Name="ID" ColumnName="OtelID" />
@@ -176,7 +156,7 @@
       <EndProperty Name="Room">
         <ScalarProperty Name="ID" ColumnName="RoomID" />
       </EndProperty>
-      <EndProperty Name="Ticket">
+      <EndProperty Name="Order">
         <ScalarProperty Name="ID" ColumnName="TicketID" />
       </EndProperty>
     </AssociationSetMapping>

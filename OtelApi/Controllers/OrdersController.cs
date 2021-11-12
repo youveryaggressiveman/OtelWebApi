@@ -12,44 +12,44 @@ using OtelApi.GlobalEntity;
 
 namespace OtelApi.Controllers
 {
-    public class DatesController : ApiController
+    public class OrdersController : ApiController
     {
         private OtelEntities db = new OtelEntities();
 
-        // GET: api/Dates
-        public IQueryable<Date> GetDate()
+        // GET: api/Orders
+        public IQueryable<Order> GetOrder()
         {
-            return db.Date;
+            return db.Order;
         }
 
-        // GET: api/Dates/5
-        [ResponseType(typeof(Date))]
-        public IHttpActionResult GetDate(int id)
+        // GET: api/Orders/5
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult GetOrder(int id)
         {
-            Date date = db.Date.Find(id);
-            if (date == null)
+            Order order = db.Order.Find(id);
+            if (order == null)
             {
                 return NotFound();
             }
 
-            return Ok(date);
+            return Ok(order);
         }
 
-        // PUT: api/Dates/5
+        // PUT: api/Orders/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutDate(int id, Date date)
+        public IHttpActionResult PutOrder(int id, Order order)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != date.ID)
+            if (id != order.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(date).State = EntityState.Modified;
+            db.Entry(order).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace OtelApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DateExists(id))
+                if (!OrderExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,50 @@ namespace OtelApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Dates
-        [ResponseType(typeof(Date))]
-        public IHttpActionResult PostDate(Date date)
+        // POST: api/Orders
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult PostOrder(Order order)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Date.Add(date);
-            db.SaveChanges();
+            db.Order.Add(order);
 
-            return CreatedAtRoute("DefaultApi", new { id = date.ID }, date);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (OrderExists(order.ID))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = order.ID }, order);
         }
 
-        // DELETE: api/Dates/5
-        [ResponseType(typeof(Date))]
-        public IHttpActionResult DeleteDate(int id)
+        // DELETE: api/Orders/5
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult DeleteOrder(int id)
         {
-            Date date = db.Date.Find(id);
-            if (date == null)
+            Order order = db.Order.Find(id);
+            if (order == null)
             {
                 return NotFound();
             }
 
-            db.Date.Remove(date);
+            db.Order.Remove(order);
             db.SaveChanges();
 
-            return Ok(date);
+            return Ok(order);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +125,9 @@ namespace OtelApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool DateExists(int id)
+        private bool OrderExists(int id)
         {
-            return db.Date.Count(e => e.ID == id) > 0;
+            return db.Order.Count(e => e.ID == id) > 0;
         }
     }
 }

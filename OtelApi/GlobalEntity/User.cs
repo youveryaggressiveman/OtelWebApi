@@ -13,14 +13,13 @@ namespace OtelApi.GlobalEntity
     using System;
     using System.Collections.Generic;
     
-    public partial class Client
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client()
+        public User()
         {
             this.Card = new HashSet<Card>();
-            this.Ticket = new HashSet<Ticket>();
-            this.Otel = new HashSet<Otel>();
+            this.Order = new HashSet<Order>();
         }
     
         public int ID { get; set; }
@@ -32,21 +31,21 @@ namespace OtelApi.GlobalEntity
         public int CountryID { get; set; }
         public int PassportID { get; set; }
         public int RoleID { get; set; }
+        public byte[] Avatar { get; set; }
+        public Nullable<int> DiscountID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
         public virtual ICollection<Card> Card { get; set; }
-        [JsonIgnore]
+
         public virtual Country Country { get; set; }
-        [JsonIgnore]
+
+        public virtual Discount Discount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Order> Order { get; set; }
+
         public virtual Passport Passport { get; set; }
-        [JsonIgnore]
+        
         public virtual Role Role { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
-        public virtual ICollection<Ticket> Ticket { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
-        public virtual ICollection<Otel> Otel { get; set; }
     }
 }

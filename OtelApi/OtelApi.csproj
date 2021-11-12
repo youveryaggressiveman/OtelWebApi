@@ -164,21 +164,19 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AddressOfOtelsController.cs" />
     <Compile Include="Controllers\CardsController.cs" />
-    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
-    <Compile Include="Controllers\DatesController.cs" />
+    <Compile Include="Controllers\DiscountsController.cs" />
     <Compile Include="Controllers\DiscriptionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageOfOtelsController.cs" />
-    <Compile Include="Controllers\NameOtelsController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\OtelsController.cs" />
     <Compile Include="Controllers\PassportsController.cs" />
     <Compile Include="Controllers\PricesController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
-    <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\TypeRoomsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,13 +186,13 @@
     <Compile Include="GlobalEntity\Card.cs">
       <DependentUpon>OtelModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GlobalEntity\Client.cs">
-      <DependentUpon>OtelModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="GlobalEntity\Country.cs">
       <DependentUpon>OtelModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GlobalEntity\Date.cs">
+    <Compile Include="GlobalEntity\Currency.cs">
+      <DependentUpon>OtelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalEntity\Discount.cs">
       <DependentUpon>OtelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GlobalEntity\Discription.cs">
@@ -203,7 +201,7 @@
     <Compile Include="GlobalEntity\ImageOfOtel.cs">
       <DependentUpon>OtelModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GlobalEntity\NameOtel.cs">
+    <Compile Include="GlobalEntity\Order.cs">
       <DependentUpon>OtelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GlobalEntity\Otel.cs">
@@ -236,13 +234,10 @@
     <Compile Include="GlobalEntity\Room.cs">
       <DependentUpon>OtelModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GlobalEntity\Ticket.cs">
-      <DependentUpon>OtelModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="GlobalEntity\TypeRoom.cs">
       <DependentUpon>OtelModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GlobalEntity\Value.cs">
+    <Compile Include="GlobalEntity\User.cs">
       <DependentUpon>OtelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

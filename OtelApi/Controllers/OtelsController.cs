@@ -8,12 +8,10 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using OtelApi;
 using OtelApi.GlobalEntity;
 
 namespace OtelApi.Controllers
 {
-    
     public class OtelsController : ApiController
     {
         private OtelEntities db = new OtelEntities();
@@ -22,56 +20,6 @@ namespace OtelApi.Controllers
         public IQueryable<Otel> GetOtel()
         {
             return db.Otel;
-        }
-
-        [Route("api/Otels/country")]
-        [ResponseType(typeof(Otel))]
-        public IQueryable<Otel> GetOtelByCountry(int id)
-        {
-            return db.Otel.Where(e => e.AddressOfOtel.Country.ID == id);
-
-        }
-
-        [Route("api/Otels/addressOfOtel")]
-        [ResponseType(typeof(AddressOfOtel))]
-        public IQueryable<AddressOfOtel> GetOtelbyAddressOfOtel(int otelID)
-        {
-            var result = from d in db.AddressOfOtel
-                         join o in db.Otel on d.ID equals o.AddressOfOtelID
-                         where o.ID == otelID
-                         select d;
-            return result;
-        }
-
-        [Route("api/Otels/description")]
-        [ResponseType(typeof(Discription))]
-        public IQueryable<Discription> GetOtelbyDescription(int otelID)
-        {
-            var result = from d in db.Discription
-                         join o in db.Otel on d.ID equals o.DiscriptionID
-                         where o.ID == otelID
-                         select d;
-            return result;
-        }
-
-        
-        [Route("api/Otels/image")]
-        [ResponseType(typeof(ImageOfOtel))]
-        public IQueryable<ImageOfOtel> GetOtelbyImageOfOtel(int otelID)
-        {
-            var result = from d in db.ImageOfOtel
-                         join o in db.Otel on d.ID equals o.ImageID
-                         where o.ID == otelID
-                         select d;
-            return result;
-        }
-
-        [Route("api/Otels/name")]
-        [ResponseType(typeof(Otel))]
-        public Otel GetOtelbyName(string otelName)
-        {
-            var result = db.Otel.FirstOrDefault(e => e.NameOtel.Name == otelName);
-            return result;
         }
 
         // GET: api/Otels/5

@@ -16,20 +16,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="HashCode" Type="int" Nullable="false" />
     <Property Name="ClientID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Client">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="CountryID" Type="int" Nullable="false" />
-    <Property Name="PassportID" Type="int" Nullable="false" />
-    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="LastFourDigits" Type="int" />
   </EntityType>
   <EntityType Name="Country">
     <Key>
@@ -38,13 +25,19 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Date">
+  <EntityType Name="Currency">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ArrivalDate" Type="date" Nullable="false" />
-    <Property Name="CountyDate" Type="date" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Discount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Discription">
     <Key>
@@ -59,31 +52,26 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Image" Type="image" Nullable="false" />
+    <Property Name="OtelID" Type="int" />
   </EntityType>
-  <EntityType Name="NameOtel">
+  <EntityType Name="Order">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="OtelID" Type="int" Nullable="false" />
+    <Property Name="ArrivalDate" Type="date" Nullable="false" />
+    <Property Name="DepartureDate" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Otel">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="NameOtelID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="AddressOfOtelID" Type="int" Nullable="false" />
-    <Property Name="ImageID" Type="int" Nullable="false" />
-    <Property Name="DiscriptionID" Type="int" />
-  </EntityType>
-  <EntityType Name="OtelOfClient">
-    <Key>
-      <PropertyRef Name="ClientID" />
-      <PropertyRef Name="OtelID" />
-    </Key>
-    <Property Name="ClientID" Type="int" Nullable="false" />
-    <Property Name="OtelID" Type="int" Nullable="false" />
+    <Property Name="DiscriptionID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Passport">
     <Key>
@@ -99,7 +87,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Number" Type="int" Nullable="false" />
-    <Property Name="ValueID" Type="int" Nullable="false" />
+    <Property Name="CurrencyID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -107,14 +95,6 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="RomOfDate">
-    <Key>
-      <PropertyRef Name="DateID" />
-      <PropertyRef Name="RoomID" />
-    </Key>
-    <Property Name="DateID" Type="int" Nullable="false" />
-    <Property Name="RoomID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Room">
     <Key>
@@ -141,14 +121,6 @@
     <Property Name="RoomID" Type="int" Nullable="false" />
     <Property Name="TicketID" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Ticket">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="ClientID" Type="int" Nullable="false" />
-    <Property Name="OtelID" Type="int" />
-  </EntityType>
   <EntityType Name="TypeRoom">
     <Key>
       <PropertyRef Name="ID" />
@@ -156,18 +128,27 @@
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Value">
+  <EntityType Name="User">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+    <Property Name="PassportID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="Avatar" Type="image" />
+    <Property Name="DiscountID" Type="int" />
   </EntityType>
   <Association Name="FK__Card__ClientID__30F848ED">
-    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Card" Type="Self.Card" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Client">
+      <Principal Role="User">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Card">
@@ -177,36 +158,36 @@
   </Association>
   <Association Name="FK__Client__CountryI__2C3393D0">
     <End Role="Country" Type="Self.Country" Multiplicity="1" />
-    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Country">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="Client">
+      <Dependent Role="User">
         <PropertyRef Name="CountryID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Client__Passport__2D27B809">
     <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
-    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Passport">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="Client">
+      <Dependent Role="User">
         <PropertyRef Name="PassportID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Client__RoleID__2E1BDC42">
     <End Role="Role" Type="Self.Role" Multiplicity="1" />
-    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Role">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="Client">
+      <Dependent Role="User">
         <PropertyRef Name="RoleID" />
       </Dependent>
     </ReferentialConstraint>
@@ -223,63 +204,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OtelOfCli__Clien__440B1D61">
-    <End Role="Client" Type="Self.Client" Multiplicity="1" />
-    <End Role="OtelOfClient" Type="Self.OtelOfClient" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Client">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="OtelOfClient">
-        <PropertyRef Name="ClientID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__OtelOfCli__OtelI__44FF419A">
-    <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
-    <End Role="OtelOfClient" Type="Self.OtelOfClient" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Otel">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="OtelOfClient">
-        <PropertyRef Name="OtelID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Price__ValueID__3A81B327">
-    <End Role="Value" Type="Self.Value" Multiplicity="1" />
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
     <End Role="Price" Type="Self.Price" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Value">
+      <Principal Role="Currency">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Price">
-        <PropertyRef Name="ValueID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RomOfDate__DateI__47DBAE45">
-    <End Role="Date" Type="Self.Date" Multiplicity="1" />
-    <End Role="RomOfDate" Type="Self.RomOfDate" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Date">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="RomOfDate">
-        <PropertyRef Name="DateID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RomOfDate__RoomI__48CFD27E">
-    <End Role="Room" Type="Self.Room" Multiplicity="1" />
-    <End Role="RomOfDate" Type="Self.RomOfDate" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Room">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="RomOfDate">
-        <PropertyRef Name="RoomID" />
+        <PropertyRef Name="CurrencyID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -307,8 +240,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ImageOfOtel_Otel">
+    <End Role="Otel" Type="Self.Otel" Multiplicity="0..1" />
+    <End Role="ImageOfOtel" Type="Self.ImageOfOtel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImageOfOtel">
+        <PropertyRef Name="OtelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Otel_Discription">
-    <End Role="Discription" Type="Self.Discription" Multiplicity="0..1" />
+    <End Role="Discription" Type="Self.Discription" Multiplicity="1" />
     <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Discription">
@@ -316,30 +261,6 @@
       </Principal>
       <Dependent Role="Otel">
         <PropertyRef Name="DiscriptionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Otel_ImageOfOtel">
-    <End Role="ImageOfOtel" Type="Self.ImageOfOtel" Multiplicity="1" />
-    <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ImageOfOtel">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Otel">
-        <PropertyRef Name="ImageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Otel_NameOtel">
-    <End Role="NameOtel" Type="Self.NameOtel" Multiplicity="1" />
-    <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NameOtel">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Otel">
-        <PropertyRef Name="NameOtelID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -392,10 +313,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_RoomOfTicket_Ticket">
-    <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
     <End Role="RoomOfTicket" Type="Self.RoomOfTicket" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Ticket">
+      <Principal Role="Order">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="RoomOfTicket">
@@ -404,89 +325,82 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Ticket_Client">
-    <End Role="Client" Type="Self.Client" Multiplicity="1" />
-    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Client">
+      <Principal Role="User">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="Ticket">
+      <Dependent Role="Order">
         <PropertyRef Name="ClientID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Ticket_Otel">
-    <End Role="Otel" Type="Self.Otel" Multiplicity="0..1" />
-    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Otel">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="Ticket">
+      <Dependent Role="Order">
         <PropertyRef Name="OtelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Discount">
+    <End Role="Discount" Type="Self.Discount" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discount">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="DiscountID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="Хранилище OtelModelContainer">
     <EntitySet Name="AddressOfOtel" EntityType="Self.AddressOfOtel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Date" EntityType="Self.Date" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discription" EntityType="Self.Discription" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ImageOfOtel" EntityType="Self.ImageOfOtel" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="NameOtel" EntityType="Self.NameOtel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Otel" EntityType="Self.Otel" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="OtelOfClient" EntityType="Self.OtelOfClient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="RomOfDate" EntityType="Self.RomOfDate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoomOfOtel" EntityType="Self.RoomOfOtel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoomOfTicket" EntityType="Self.RoomOfTicket" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeRoom" EntityType="Self.TypeRoom" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Value" EntityType="Self.Value" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Card__ClientID__30F848ED" Association="Self.FK__Card__ClientID__30F848ED">
-      <End Role="Client" EntitySet="Client" />
+      <End Role="User" EntitySet="User" />
       <End Role="Card" EntitySet="Card" />
     </AssociationSet>
     <AssociationSet Name="FK__Client__CountryI__2C3393D0" Association="Self.FK__Client__CountryI__2C3393D0">
       <End Role="Country" EntitySet="Country" />
-      <End Role="Client" EntitySet="Client" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
     <AssociationSet Name="FK__Client__Passport__2D27B809" Association="Self.FK__Client__Passport__2D27B809">
       <End Role="Passport" EntitySet="Passport" />
-      <End Role="Client" EntitySet="Client" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
     <AssociationSet Name="FK__Client__RoleID__2E1BDC42" Association="Self.FK__Client__RoleID__2E1BDC42">
       <End Role="Role" EntitySet="Role" />
-      <End Role="Client" EntitySet="Client" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
     <AssociationSet Name="FK__Otel__AddressOfO__412EB0B6" Association="Self.FK__Otel__AddressOfO__412EB0B6">
       <End Role="AddressOfOtel" EntitySet="AddressOfOtel" />
       <End Role="Otel" EntitySet="Otel" />
     </AssociationSet>
-    <AssociationSet Name="FK__OtelOfCli__Clien__440B1D61" Association="Self.FK__OtelOfCli__Clien__440B1D61">
-      <End Role="Client" EntitySet="Client" />
-      <End Role="OtelOfClient" EntitySet="OtelOfClient" />
-    </AssociationSet>
-    <AssociationSet Name="FK__OtelOfCli__OtelI__44FF419A" Association="Self.FK__OtelOfCli__OtelI__44FF419A">
-      <End Role="Otel" EntitySet="Otel" />
-      <End Role="OtelOfClient" EntitySet="OtelOfClient" />
-    </AssociationSet>
     <AssociationSet Name="FK__Price__ValueID__3A81B327" Association="Self.FK__Price__ValueID__3A81B327">
-      <End Role="Value" EntitySet="Value" />
+      <End Role="Currency" EntitySet="Currency" />
       <End Role="Price" EntitySet="Price" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RomOfDate__DateI__47DBAE45" Association="Self.FK__RomOfDate__DateI__47DBAE45">
-      <End Role="Date" EntitySet="Date" />
-      <End Role="RomOfDate" EntitySet="RomOfDate" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RomOfDate__RoomI__48CFD27E" Association="Self.FK__RomOfDate__RoomI__48CFD27E">
-      <End Role="Room" EntitySet="Room" />
-      <End Role="RomOfDate" EntitySet="RomOfDate" />
     </AssociationSet>
     <AssociationSet Name="FK__Room__PriceID__3D5E1FD2" Association="Self.FK__Room__PriceID__3D5E1FD2">
       <End Role="Price" EntitySet="Price" />
@@ -496,16 +410,12 @@
       <End Role="Country" EntitySet="Country" />
       <End Role="AddressOfOtel" EntitySet="AddressOfOtel" />
     </AssociationSet>
+    <AssociationSet Name="FK_ImageOfOtel_Otel" Association="Self.FK_ImageOfOtel_Otel">
+      <End Role="Otel" EntitySet="Otel" />
+      <End Role="ImageOfOtel" EntitySet="ImageOfOtel" />
+    </AssociationSet>
     <AssociationSet Name="FK_Otel_Discription" Association="Self.FK_Otel_Discription">
       <End Role="Discription" EntitySet="Discription" />
-      <End Role="Otel" EntitySet="Otel" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Otel_ImageOfOtel" Association="Self.FK_Otel_ImageOfOtel">
-      <End Role="ImageOfOtel" EntitySet="ImageOfOtel" />
-      <End Role="Otel" EntitySet="Otel" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Otel_NameOtel" Association="Self.FK_Otel_NameOtel">
-      <End Role="NameOtel" EntitySet="NameOtel" />
       <End Role="Otel" EntitySet="Otel" />
     </AssociationSet>
     <AssociationSet Name="FK_Room_TypeRoom" Association="Self.FK_Room_TypeRoom">
@@ -525,16 +435,20 @@
       <End Role="RoomOfTicket" EntitySet="RoomOfTicket" />
     </AssociationSet>
     <AssociationSet Name="FK_RoomOfTicket_Ticket" Association="Self.FK_RoomOfTicket_Ticket">
-      <End Role="Ticket" EntitySet="Ticket" />
+      <End Role="Order" EntitySet="Order" />
       <End Role="RoomOfTicket" EntitySet="RoomOfTicket" />
     </AssociationSet>
     <AssociationSet Name="FK_Ticket_Client" Association="Self.FK_Ticket_Client">
-      <End Role="Client" EntitySet="Client" />
-      <End Role="Ticket" EntitySet="Ticket" />
+      <End Role="User" EntitySet="User" />
+      <End Role="Order" EntitySet="Order" />
     </AssociationSet>
     <AssociationSet Name="FK_Ticket_Otel" Association="Self.FK_Ticket_Otel">
       <End Role="Otel" EntitySet="Otel" />
-      <End Role="Ticket" EntitySet="Ticket" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Discount" Association="Self.FK_User_Discount">
+      <End Role="Discount" EntitySet="Discount" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

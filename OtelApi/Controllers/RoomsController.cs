@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using OtelApi;
 using OtelApi.GlobalEntity;
 
 namespace OtelApi.Controllers
@@ -21,17 +20,6 @@ namespace OtelApi.Controllers
         public IQueryable<Room> GetRoom()
         {
             return db.Room;
-        }
-
-        [Route("api/Rooms/typeRoomsId")]
-        [ResponseType(typeof(Room))]
-        public IQueryable<Room> GetRoomByTypeRoom(int id)
-        {
-            var result = (from c in db.Room
-                          join o in db.TypeRoom on c.TypeRoomID equals o.ID
-                          where o.ID == id
-                          select c).Distinct();
-            return result;
         }
 
         // GET: api/Rooms/5

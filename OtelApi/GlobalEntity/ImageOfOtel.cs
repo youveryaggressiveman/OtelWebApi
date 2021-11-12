@@ -15,17 +15,11 @@ namespace OtelApi.GlobalEntity
     
     public partial class ImageOfOtel
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ImageOfOtel()
-        {
-            this.Otel = new HashSet<Otel>();
-        }
-    
         public int ID { get; set; }
         public byte[] Image { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public Nullable<int> OtelID { get; set; }
+
         [JsonIgnore]
-        public virtual ICollection<Otel> Otel { get; set; }
+        public virtual Otel Otel { get; set; }
     }
 }

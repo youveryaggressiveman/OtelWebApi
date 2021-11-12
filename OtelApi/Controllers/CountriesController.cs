@@ -22,16 +22,7 @@ namespace OtelApi.Controllers
             return db.Country;
         }
 
-        [Route("api/Countries/otelID")]
-        [ResponseType(typeof(Country))]
-        public IQueryable<Country> GetOtelbyName(int id)
-        {
-            var result = (from c in db.Country
-                         join o in db.Otel on c.ID equals o.AddressOfOtel.Country.ID
-                         where o.ID == id
-                         select c).Distinct();
-            return result;
-        }
+        // GET: api/Countries/5
 
         // GET: api/Countries/5
         [ResponseType(typeof(Country))]

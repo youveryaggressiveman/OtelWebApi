@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System.Web.Http.Results;
 using OtelApi.GlobalEntity;
 
 namespace OtelApi.Controllers
@@ -78,13 +77,6 @@ namespace OtelApi.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }
-
-            card.Client = db.Client.FirstOrDefault(e => e.ID == card.ClientID);
-
-            if (db.Card.FirstOrDefault(e=> e.HashCode == card.HashCode) != null)
-            {
-                return Ok(card);
             }
 
             db.Card.Add(card);

@@ -22,17 +22,6 @@ namespace OtelApi.Controllers
             return db.Price;
         }
 
-        [Route("api/Prices/roomId")]
-        [ResponseType(typeof(Price))]
-        public IQueryable<Price> GetPriceByRoomId(int id)
-        {
-            var result = (from c in db.Price
-                          join o in db.Room on c.ID equals o.PriceID
-                          where o.ID == id
-                          select c).Distinct();
-            return result;
-        }
-
         // GET: api/Prices/5
         [ResponseType(typeof(Price))]
         public IHttpActionResult GetPrice(int id)

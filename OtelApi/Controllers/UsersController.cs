@@ -12,55 +12,44 @@ using OtelApi.GlobalEntity;
 
 namespace OtelApi.Controllers
 {
-    public class ValuesController : ApiController
+    public class UsersController : ApiController
     {
         private OtelEntities db = new OtelEntities();
 
-        // GET: api/Values
-        public IQueryable<Value> GetValue()
+        // GET: api/Users
+        public IQueryable<User> GetUser()
         {
-            return db.Value;
+            return db.User;
         }
 
-        [Route("api/Values/priceId")]
-        [ResponseType(typeof(Value))]
-        public IQueryable<Value> GetValuebyPriceId(int id)
+        // GET: api/Users/5
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetUser(int id)
         {
-            var result = (from c in db.Value
-                          join o in db.Price on c.ID equals o.ValueID
-                          where o.ID == id
-                          select c).Distinct();
-            return result;
-        }
-
-        // GET: api/Values/5
-        [ResponseType(typeof(Value))]
-        public IHttpActionResult GetValue(int id)
-        {
-            Value value = db.Value.Find(id);
-            if (value == null)
+            User user = db.User.Find(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(value);
+            return Ok(user);
         }
 
-        // PUT: api/Values/5
+        // PUT: api/Users/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutValue(int id, Value value)
+        public IHttpActionResult PutUser(int id, User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != value.ID)
+            if (id != user.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(value).State = EntityState.Modified;
+            db.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +57,7 @@ namespace OtelApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ValueExists(id))
+                if (!UserExists(id))
                 {
                     return NotFound();
                 }
@@ -81,35 +70,35 @@ namespace OtelApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Values
-        [ResponseType(typeof(Value))]
-        public IHttpActionResult PostValue(Value value)
+        // POST: api/Users
+        [ResponseType(typeof(User))]
+        public IHttpActionResult PostUser(User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Value.Add(value);
+            db.User.Add(user);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = value.ID }, value);
+            return CreatedAtRoute("DefaultApi", new { id = user.ID }, user);
         }
 
-        // DELETE: api/Values/5
-        [ResponseType(typeof(Value))]
-        public IHttpActionResult DeleteValue(int id)
+        // DELETE: api/Users/5
+        [ResponseType(typeof(User))]
+        public IHttpActionResult DeleteUser(int id)
         {
-            Value value = db.Value.Find(id);
-            if (value == null)
+            User user = db.User.Find(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            db.Value.Remove(value);
+            db.User.Remove(user);
             db.SaveChanges();
 
-            return Ok(value);
+            return Ok(user);
         }
 
         protected override void Dispose(bool disposing)
@@ -121,9 +110,9 @@ namespace OtelApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ValueExists(int id)
+        private bool UserExists(int id)
         {
-            return db.Value.Count(e => e.ID == id) > 0;
+            return db.User.Count(e => e.ID == id) > 0;
         }
     }
 }
