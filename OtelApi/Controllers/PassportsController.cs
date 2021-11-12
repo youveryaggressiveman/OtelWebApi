@@ -22,6 +22,20 @@ namespace OtelApi.Controllers
             return db.Passport;
         }
 
+        // GET: api/Passports/data/5
+        [Route("api/Passports/data")]
+        [ResponseType(typeof(Passport))]
+        public IHttpActionResult GetPassport(string serial, string number)
+        {
+            Passport passport = db.Passport.FirstOrDefault(e => e.PassportNumber == number && e.PassportSerial == serial);
+            if (passport == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(passport);
+        }
+
         // GET: api/Passports/5
         [ResponseType(typeof(Passport))]
         public IHttpActionResult GetPassport(int id)

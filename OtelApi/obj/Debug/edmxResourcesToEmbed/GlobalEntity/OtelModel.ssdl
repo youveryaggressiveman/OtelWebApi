@@ -104,14 +104,7 @@
     <Property Name="TypeRoomID" Type="int" Nullable="false" />
     <Property Name="Number" Type="int" Nullable="false" />
     <Property Name="PriceID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="RoomOfOtel">
-    <Key>
-      <PropertyRef Name="RoomID" />
-      <PropertyRef Name="OtelID" />
-    </Key>
-    <Property Name="RoomID" Type="int" Nullable="false" />
-    <Property Name="OtelID" Type="int" Nullable="false" />
+    <Property Name="OtelID" Type="int" />
   </EntityType>
   <EntityType Name="RoomOfTicket">
     <Key>
@@ -264,6 +257,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Room_Otel">
+    <End Role="Otel" Type="Self.Otel" Multiplicity="0..1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="OtelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Room_TypeRoom">
     <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
     <End Role="Room" Type="Self.Room" Multiplicity="*" />
@@ -273,30 +278,6 @@
       </Principal>
       <Dependent Role="Room">
         <PropertyRef Name="TypeRoomID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_RoomOfOtel_Otel">
-    <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
-    <End Role="RoomOfOtel" Type="Self.RoomOfOtel" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Otel">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="RoomOfOtel">
-        <PropertyRef Name="OtelID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_RoomOfOtel_Room">
-    <End Role="Room" Type="Self.Room" Multiplicity="1" />
-    <End Role="RoomOfOtel" Type="Self.RoomOfOtel" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Room">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="RoomOfOtel">
-        <PropertyRef Name="RoomID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -374,7 +355,6 @@
     <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="RoomOfOtel" EntityType="Self.RoomOfOtel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoomOfTicket" EntityType="Self.RoomOfTicket" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeRoom" EntityType="Self.TypeRoom" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -418,17 +398,13 @@
       <End Role="Discription" EntitySet="Discription" />
       <End Role="Otel" EntitySet="Otel" />
     </AssociationSet>
+    <AssociationSet Name="FK_Room_Otel" Association="Self.FK_Room_Otel">
+      <End Role="Otel" EntitySet="Otel" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
     <AssociationSet Name="FK_Room_TypeRoom" Association="Self.FK_Room_TypeRoom">
       <End Role="TypeRoom" EntitySet="TypeRoom" />
       <End Role="Room" EntitySet="Room" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RoomOfOtel_Otel" Association="Self.FK_RoomOfOtel_Otel">
-      <End Role="Otel" EntitySet="Otel" />
-      <End Role="RoomOfOtel" EntitySet="RoomOfOtel" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RoomOfOtel_Room" Association="Self.FK_RoomOfOtel_Room">
-      <End Role="Room" EntitySet="Room" />
-      <End Role="RoomOfOtel" EntitySet="RoomOfOtel" />
     </AssociationSet>
     <AssociationSet Name="FK_RoomOfTicket_Room" Association="Self.FK_RoomOfTicket_Room">
       <End Role="Room" EntitySet="Room" />

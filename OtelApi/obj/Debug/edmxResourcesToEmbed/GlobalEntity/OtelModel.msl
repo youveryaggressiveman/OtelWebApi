@@ -116,6 +116,7 @@
           <ScalarProperty Name="TypeRoomID" ColumnName="TypeRoomID" />
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="PriceID" ColumnName="PriceID" />
+          <ScalarProperty Name="OtelID" ColumnName="OtelID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -144,14 +145,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="RoomOfOtel" TypeName="OtelModel.RoomOfOtel" StoreEntitySet="RoomOfOtel">
-      <EndProperty Name="Otel">
-        <ScalarProperty Name="ID" ColumnName="OtelID" />
-      </EndProperty>
-      <EndProperty Name="Room">
-        <ScalarProperty Name="ID" ColumnName="RoomID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="RoomOfTicket" TypeName="OtelModel.RoomOfTicket" StoreEntitySet="RoomOfTicket">
       <EndProperty Name="Room">
         <ScalarProperty Name="ID" ColumnName="RoomID" />

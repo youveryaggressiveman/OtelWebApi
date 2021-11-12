@@ -23,8 +23,6 @@ namespace OtelApi.Controllers
         }
 
         // GET: api/Countries/5
-
-        // GET: api/Countries/5
         [ResponseType(typeof(Country))]
         public IHttpActionResult GetCountry(int id)
         {

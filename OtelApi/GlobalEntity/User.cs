@@ -9,7 +9,6 @@
 
 namespace OtelApi.GlobalEntity
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -36,16 +35,11 @@ namespace OtelApi.GlobalEntity
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Card> Card { get; set; }
-
         public virtual Country Country { get; set; }
-
         public virtual Discount Discount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
         public virtual ICollection<Order> Order { get; set; }
-
         public virtual Passport Passport { get; set; }
-        
         public virtual Role Role { get; set; }
     }
 }

@@ -9,7 +9,6 @@
 
 namespace OtelApi.GlobalEntity
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -27,7 +26,7 @@ namespace OtelApi.GlobalEntity
         public string Name { get; set; }
         public int AddressOfOtelID { get; set; }
         public int DiscriptionID { get; set; }
-
+    
         public virtual AddressOfOtel AddressOfOtel { get; set; }
         public virtual Discription Discription { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

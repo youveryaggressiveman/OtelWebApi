@@ -29,7 +29,6 @@ namespace OtelApi.GlobalEntity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
         public virtual ICollection<Otel> Otel { get; set; }
-        [JsonIgnore]
         public virtual Country Country { get; set; }
     }
 }

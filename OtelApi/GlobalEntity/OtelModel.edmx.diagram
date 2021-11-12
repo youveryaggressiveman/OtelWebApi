@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="95b09f6d8545463b9e9816df4b8f665a" Name="Diagram1">
-        <EntityTypeShape EntityType="OtelModel.AddressOfOtel" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Card" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+      <Diagram DiagramId="3aac305323f9427083ed3da421d752ca" Name="Diagram1">
+        <EntityTypeShape EntityType="OtelModel.AddressOfOtel" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Card" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="OtelModel.Country" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Currency" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Discount" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Discription" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Currency" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Discount" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Discription" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="OtelModel.ImageOfOtel" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Order" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Otel" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Order" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Otel" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="OtelModel.Passport" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Price" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Role" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Price" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Role" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="OtelModel.Room" Width="1.5" PointX="7.5" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.TypeRoom" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.TypeRoom" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
         <EntityTypeShape EntityType="OtelModel.User" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="OtelModel.FK__Otel__AddressOfO__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK_AddressOfOtel_Country" ManuallyRouted="false" />
@@ -30,11 +30,11 @@
         <AssociationConnector Association="OtelModel.FK_ImageOfOtel_Otel" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK_Ticket_Client" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK_Ticket_Otel" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelModel.FK_Room_Otel" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK__Client__Passport__2D27B809" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK__Room__PriceID__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK__Client__RoleID__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK_Room_TypeRoom" ManuallyRouted="false" />
-        <AssociationConnector Association="OtelModel.RoomOfOtel" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.RoomOfTicket" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

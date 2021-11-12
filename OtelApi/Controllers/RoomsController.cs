@@ -22,6 +22,23 @@ namespace OtelApi.Controllers
             return db.Room;
         }
 
+        // GET: api/Rooms/otel
+        [Route("api/Rooms/otel")]
+        [ResponseType(typeof(Room))]
+        public IHttpActionResult GetRoomByOtelId(int id)
+        {
+            var room = from r in db.Room
+                       join o in db.Otel on r.OtelID equals o.ID
+                       where o.ID == id
+                       select r;
+            if (room == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(room);
+        }
+
         // GET: api/Rooms/5
         [ResponseType(typeof(Room))]
         public IHttpActionResult GetRoom(int id)

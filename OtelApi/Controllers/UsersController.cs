@@ -22,6 +22,20 @@ namespace OtelApi.Controllers
             return db.User;
         }
 
+        // GET: api/Users/phone/5
+        [Route("api/Users/phone")]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetUserByPhone(string phone)
+        {
+            User user = db.User.FirstOrDefault(e => e.Phone == phone);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
         // GET: api/Users/5
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(int id)

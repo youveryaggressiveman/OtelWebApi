@@ -22,6 +22,21 @@ namespace OtelApi.Controllers
             return db.Otel;
         }
 
+        // GET: api/Otels/coutry
+        [Route("api/Otels/country")]
+        [ResponseType(typeof(Otel))]
+        public IHttpActionResult GetOtelByCountryID(int id)
+        {
+            var otel = db.Otel.Where(e => e.AddressOfOtel.Country.ID == id);
+
+            if (otel == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(otel);
+        }
+
         // GET: api/Otels/5
         [ResponseType(typeof(Otel))]
         public IHttpActionResult GetOtel(int id)
