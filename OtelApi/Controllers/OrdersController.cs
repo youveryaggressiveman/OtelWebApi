@@ -22,6 +22,20 @@ namespace OtelApi.Controllers
             return db.Order;
         }
 
+        // GET: api/Orders/user/5
+        [Route("api/Orders/user")]
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult GetOrderBy(int id)
+        {
+            var order = db.Order.Where(e => e.User.ID == id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(order);
+        }
+
         // GET: api/Orders/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)
@@ -79,7 +93,17 @@ namespace OtelApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            foreach (var item in order.Room)
+            {
+                db.Room.Attach(item);
+            }
+
             db.Order.Add(order);
+
+            Order insertedOrder = new Order()
+            {
+                
+            };
 
             try
             {

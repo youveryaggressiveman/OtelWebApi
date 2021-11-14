@@ -24,7 +24,7 @@ namespace OtelApi.GlobalEntity
         public int ID { get; set; }
         public int Number { get; set; }
         public int CurrencyID { get; set; }
-
+    
         public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]

@@ -22,6 +22,20 @@ namespace OtelApi.Controllers
             return db.Card;
         }
 
+        // GET: api/Cards/otel/5
+        [Route("api/Cards/client")]
+        [ResponseType(typeof(Card))]
+        public IHttpActionResult GetCardListByClient(int id)
+        {
+            var card = db.Card.Where(e => e.User.ID == id);
+            if (card == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(card);
+        }
+
         // GET: api/Cards/5
         [ResponseType(typeof(Card))]
         public IHttpActionResult GetCard(int id)

@@ -22,21 +22,58 @@ namespace OtelApi.Controllers
             return db.Room;
         }
 
-        // GET: api/Rooms/otel
-        [Route("api/Rooms/otel")]
+        // GET: api/Rooms/order
+        [Route("api/Rooms/order")]
         [ResponseType(typeof(Room))]
-        public IHttpActionResult GetRoomByOtelId(int id)
+        public IHttpActionResult GetRoomByOrderId(int id)
         {
             var room = from r in db.Room
-                       join o in db.Otel on r.OtelID equals o.ID
+                       join o in db.Order on r.ID equals o.ID
                        where o.ID == id
                        select r;
+
             if (room == null)
             {
                 return NotFound();
             }
 
             return Ok(room);
+        }
+
+        // GET: api/Rooms/otel
+        [Route("api/Rooms/otel")]
+        [ResponseType(typeof(Room))]
+        public IHttpActionResult GetRoomByOtelId(int id, DateTime date)
+        {
+            var ordres = db.Order;
+            var room = (from r in db.Room
+                       join o in db.Otel on r.OtelID equals o.ID
+                       where o.ID == id
+                       select r).Distinct();
+
+            List<Room> result = room.ToList();
+
+            foreach (var item in ordres)
+            {
+                foreach (var itemRoom in room)
+                {
+                    if (item.Room.Contains(itemRoom))
+                    {
+                        if (item.DepartureDate >= date)
+                        {
+                            result.Remove(itemRoom);
+                        }
+                    }
+                }
+
+            }
+
+            if (result.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
         // GET: api/Rooms/5

@@ -19,7 +19,7 @@ namespace OtelApi.GlobalEntity
         public int HashCode { get; set; }
         public int ClientID { get; set; }
         public Nullable<int> LastFourDigits { get; set; }
-    
+
         [JsonIgnore]
         public virtual User User { get; set; }
     }
