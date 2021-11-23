@@ -43,19 +43,39 @@ namespace OtelApi.Controllers
         // GET: api/Rooms/otel
         [Route("api/Rooms/otel")]
         [ResponseType(typeof(Room))]
-        public IHttpActionResult GetRoomByOtelId(int id, DateTime date)
+        public IHttpActionResult GetRoomByOtelId(int id, DateTime date, int typeRoom)
         {
+            List<Room> number = new List<Room>();
             var ordres = db.Order;
-            var room = (from r in db.Room
-                       join o in db.Otel on r.OtelID equals o.ID
-                       where o.ID == id
-                       select r).Distinct();
+            var roomByOtel = from r in db.Room
+                             join o in db.Otel on r.OtelID equals o.ID
+                             where o.ID == id
+                             select r;
 
-            List<Room> result = room.ToList();
+            var roomByTypeRoom = from d in db.Room
+                                 join t in db.TypeRoom on d.TypeRoomID equals t.ID
+                                 where t.ID == typeRoom
+                                 select d;
+
+            foreach (var item in roomByOtel)
+            {
+                foreach (var item2 in roomByTypeRoom)
+                {
+
+                    if (item == item2)
+                    {
+                        number.Add(item2);
+                    }
+
+                }
+
+            }
+
+            List<Room> result = number;
 
             foreach (var item in ordres)
             {
-                foreach (var itemRoom in room)
+                foreach (var itemRoom in number)
                 {
                     if (item.Room.Contains(itemRoom))
                     {
