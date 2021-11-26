@@ -22,24 +22,6 @@ namespace OtelApi.Controllers
             return db.Room;
         }
 
-        // GET: api/Rooms/order
-        [Route("api/Rooms/order")]
-        [ResponseType(typeof(Room))]
-        public IHttpActionResult GetRoomByOrderId(int id)
-        {
-            var room = from r in db.Room
-                       join o in db.Order on r.ID equals o.ID
-                       where o.ID == id
-                       select r;
-
-            if (room == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(room);
-        }
-
         // GET: api/Rooms/otel
         [Route("api/Rooms/otel")]
         [ResponseType(typeof(Room))]
@@ -75,7 +57,7 @@ namespace OtelApi.Controllers
 
             foreach (var item in ordres)
             {
-                foreach (var itemRoom in number)
+                foreach (var itemRoom in number.ToList())
                 {
                     if (item.Room.Contains(itemRoom))
                     {

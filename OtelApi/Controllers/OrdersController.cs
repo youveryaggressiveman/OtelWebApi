@@ -93,17 +93,22 @@ namespace OtelApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            var roomList = new List<Room>();
+
             foreach (var item in order.Room)
             {
-                db.Room.Attach(item);
+                item.Price.Currency = null;
+                roomList.Add(item);
+            }
+
+            order.Room = roomList;
+
+            foreach (var item in roomList)
+            {
+                db.Set<Room>().Attach(item);
             }
 
             db.Order.Add(order);
-
-            Order insertedOrder = new Order()
-            {
-                
-            };
 
             try
             {
