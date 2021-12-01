@@ -28,10 +28,6 @@ namespace OtelApi.Controllers
         public IHttpActionResult GetUserByPhone(string phone)
         {
             User user = db.User.FirstOrDefault(e => e.Phone == phone);
-            if (user == null)
-            {
-                return NotFound();
-            }
 
             return Ok(user);
         }
@@ -61,6 +57,21 @@ namespace OtelApi.Controllers
             if (id != user.ID)
             {
                 return BadRequest();
+            }
+
+            var roomList = new List<Room>();
+
+            foreach (var item in user.Order)
+            {
+                foreach (var r in item.Room)
+                {
+                        r.Price.Currency = null;
+                        roomList.Add(r);
+                }
+
+                item.Room = roomList;
+
+                roomList = new List<Room>();
             }
 
             db.Entry(user).State = EntityState.Modified;

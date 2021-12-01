@@ -112,6 +112,28 @@ namespace OtelApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            //List<TypeRoom> newTypeRoom = new List<TypeRoom>();
+
+            //foreach (var item in otel.Room)
+            //{
+            //    var insertedTypeRoom = db.TypeRoom.FirstOrDefault(e => e.Name == item.TypeRoom.Name);
+
+            //    if (insertedTypeRoom == null)
+            //    {
+            //        newTypeRoom.Add(item.TypeRoom);
+            //    }
+            //}
+
+            //List<TypeRoom> linkedTypeRoom = new List<TypeRoom>();
+
+            //if (newTypeRoom.Count > 0)
+            //{
+            //    foreach (var item in newTypeRoom)
+            //    {
+            //        linkedTypeRoom.Add(db.TypeRoom.Add(item));
+            //    }    
+            //}
+
             db.Otel.Add(otel);
 
             try
