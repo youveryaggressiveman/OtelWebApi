@@ -12,44 +12,44 @@ using OtelApi.GlobalEntity;
 
 namespace OtelApi.Controllers
 {
-    public class CountriesController : ApiController
+    public class CurrenciesController : ApiController
     {
         private OtelEntities db = new OtelEntities();
 
-        // GET: api/Countries
-        public IQueryable<Country> GetCountry()
+        // GET: api/Currencies
+        public IQueryable<Currency> GetCurrency()
         {
-            return db.Country;
+            return db.Currency;
         }
 
-        // GET: api/Countries/5
-        [ResponseType(typeof(Country))]
-        public IHttpActionResult GetCountry(int id)
+        // GET: api/Currencies/5
+        [ResponseType(typeof(Currency))]
+        public IHttpActionResult GetCurrency(int id)
         {
-            Country country = db.Country.Find(id);
-            if (country == null)
+            Currency currency = db.Currency.Find(id);
+            if (currency == null)
             {
                 return NotFound();
             }
 
-            return Ok(country);
+            return Ok(currency);
         }
 
-        // PUT: api/Countries/5
+        // PUT: api/Currencies/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCountry(int id, Country country)
+        public IHttpActionResult PutCurrency(int id, Currency currency)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != country.ID)
+            if (id != currency.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(country).State = EntityState.Modified;
+            db.Entry(currency).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace OtelApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CountryExists(id))
+                if (!CurrencyExists(id))
                 {
                     return NotFound();
                 }
@@ -70,41 +70,41 @@ namespace OtelApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Countries
-        [ResponseType(typeof(Country))]
-        public IHttpActionResult PostCountry(Country country)
+        // POST: api/Currencies
+        [ResponseType(typeof(Currency))]
+        public IHttpActionResult PostCurrency(Currency currency)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (db.Country.FirstOrDefault(e=>e.Name == country.Name) == null)
+            if (db.Currency.FirstOrDefault(e => e.Name == currency.Name) == null)
             {
-                db.Country.Add(country);
+                db.Currency.Add(currency);
             }
 
-            ModelState.AddModelError("Предупреждение", "Такая страна уже есть в базе данных");
-            
+            ModelState.AddModelError("Предупреждение", "Такая валюта уже есть в базе данных");
+  
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = country.ID }, country);
+            return CreatedAtRoute("DefaultApi", new { id = currency.ID }, currency);
         }
 
-        // DELETE: api/Countries/5
-        [ResponseType(typeof(Country))]
-        public IHttpActionResult DeleteCountry(int id)
+        // DELETE: api/Currencies/5
+        [ResponseType(typeof(Currency))]
+        public IHttpActionResult DeleteCurrency(int id)
         {
-            Country country = db.Country.Find(id);
-            if (country == null)
+            Currency currency = db.Currency.Find(id);
+            if (currency == null)
             {
                 return NotFound();
             }
 
-            db.Country.Remove(country);
+            db.Currency.Remove(currency);
             db.SaveChanges();
 
-            return Ok(country);
+            return Ok(currency);
         }
 
         protected override void Dispose(bool disposing)
@@ -116,9 +116,9 @@ namespace OtelApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CountryExists(int id)
+        private bool CurrencyExists(int id)
         {
-            return db.Country.Count(e => e.ID == id) > 0;
+            return db.Currency.Count(e => e.ID == id) > 0;
         }
     }
 }

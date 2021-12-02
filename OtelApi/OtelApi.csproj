@@ -165,6 +165,7 @@
     <Compile Include="Controllers\AddressOfOtelsController.cs" />
     <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\CurrenciesController.cs" />
     <Compile Include="Controllers\DiscountsController.cs" />
     <Compile Include="Controllers\DiscriptionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

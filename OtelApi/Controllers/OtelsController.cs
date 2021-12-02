@@ -112,27 +112,21 @@ namespace OtelApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            //List<TypeRoom> newTypeRoom = new List<TypeRoom>();
+            var roomList = new List<Room>();
 
-            //foreach (var item in otel.Room)
-            //{
-            //    var insertedTypeRoom = db.TypeRoom.FirstOrDefault(e => e.Name == item.TypeRoom.Name);
+            foreach (var item in otel.Room)
+            {
+                item.Price.CurrencyID = item.Price.Currency.ID;
+                item.Price.Currency = null;
+                item.TypeRoomID = item.TypeRoom.ID;
+                item.TypeRoom = null;
+                roomList.Add(item);
+            }
 
-            //    if (insertedTypeRoom == null)
-            //    {
-            //        newTypeRoom.Add(item.TypeRoom);
-            //    }
-            //}
+            otel.Room = roomList;
 
-            //List<TypeRoom> linkedTypeRoom = new List<TypeRoom>();
-
-            //if (newTypeRoom.Count > 0)
-            //{
-            //    foreach (var item in newTypeRoom)
-            //    {
-            //        linkedTypeRoom.Add(db.TypeRoom.Add(item));
-            //    }    
-            //}
+            db.Country.Attach(otel.AddressOfOtel.Country);
+            db.AddressOfOtel.Add(otel.AddressOfOtel);
 
             db.Otel.Add(otel);
 

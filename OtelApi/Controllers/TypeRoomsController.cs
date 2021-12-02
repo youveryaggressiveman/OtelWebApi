@@ -97,7 +97,12 @@ namespace OtelApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.TypeRoom.Add(typeRoom);
+            if (db.TypeRoom.FirstOrDefault(e => e.Name == typeRoom.Name) == null)
+            {
+                db.TypeRoom.Add(typeRoom);
+            }
+
+            ModelState.AddModelError("Предупреждение", "Такой тип комнат уже есть в базе данных");        
 
             try
             {
