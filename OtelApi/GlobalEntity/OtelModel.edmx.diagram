@@ -4,28 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1fb29932533a4e84ab24f631da4c7044" Name="Diagram1">
-        <EntityTypeShape EntityType="OtelModel.AddressOfOtel" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Card" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Country" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Currency" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Discount" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Discription" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.ImageOfOtel" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Order" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Otel" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Passport" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Price" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Role" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.Room" Width="1.5" PointX="7.5" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="OtelModel.TypeRoom" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+      <Diagram DiagramId="494ea975540e4c84a60cb56f3739be37" Name="Diagram1">
+        <EntityTypeShape EntityType="OtelModel.AddressOfOtel" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Card" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Country" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Currency" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Discription" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.ImageOfOtel" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Order" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Otel" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Passport" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Price" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Role" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.Room" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelModel.TypeRoom" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
         <EntityTypeShape EntityType="OtelModel.User" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="OtelModel.FK__Otel__AddressOfO__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK_AddressOfOtel_Country" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK__Card__ClientID__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK__Client__CountryI__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="OtelModel.FK__Price__ValueID__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="OtelModel.FK_User_Discount" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelModel.FK__Price__CurrencyI__47DBAE45" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK_Otel_Discription" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK_ImageOfOtel_Otel" ManuallyRouted="false" />
         <AssociationConnector Association="OtelModel.FK_Ticket_Client" ManuallyRouted="false" />

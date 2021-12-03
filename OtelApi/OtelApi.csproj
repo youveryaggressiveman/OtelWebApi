@@ -166,7 +166,6 @@
     <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\CurrenciesController.cs" />
-    <Compile Include="Controllers\DiscountsController.cs" />
     <Compile Include="Controllers\DiscriptionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageOfOtelsController.cs" />
@@ -191,9 +190,6 @@
       <DependentUpon>OtelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GlobalEntity\Currency.cs">
-      <DependentUpon>OtelModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GlobalEntity\Discount.cs">
       <DependentUpon>OtelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GlobalEntity\Discription.cs">

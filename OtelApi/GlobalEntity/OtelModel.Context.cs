@@ -29,7 +29,6 @@ namespace OtelApi.GlobalEntity
         public virtual DbSet<Card> Card { get; set; }
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<Currency> Currency { get; set; }
-        public virtual DbSet<Discount> Discount { get; set; }
         public virtual DbSet<Discription> Discription { get; set; }
         public virtual DbSet<ImageOfOtel> ImageOfOtel { get; set; }
         public virtual DbSet<Order> Order { get; set; }

@@ -32,13 +32,6 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Discount">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Number" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Discription">
     <Key>
       <PropertyRef Name="ID" />
@@ -95,6 +88,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Discount" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Room">
     <Key>
@@ -135,7 +129,6 @@
     <Property Name="PassportID" Type="int" Nullable="false" />
     <Property Name="RoleID" Type="int" Nullable="false" />
     <Property Name="Avatar" Type="image" />
-    <Property Name="DiscountID" Type="int" />
   </EntityType>
   <Association Name="FK__Card__ClientID__30F848ED">
     <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -197,7 +190,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Price__ValueID__3A81B327">
+  <Association Name="FK__Price__CurrencyI__47DBAE45">
     <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
     <End Role="Price" Type="Self.Price" Multiplicity="*" />
     <ReferentialConstraint>
@@ -329,24 +322,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_User_Discount">
-    <End Role="Discount" Type="Self.Discount" Multiplicity="0..1" />
-    <End Role="User" Type="Self.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Discount">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="DiscountID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="Хранилище OtelModelContainer">
     <EntitySet Name="AddressOfOtel" EntityType="Self.AddressOfOtel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discription" EntityType="Self.Discription" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ImageOfOtel" EntityType="Self.ImageOfOtel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
@@ -378,7 +358,7 @@
       <End Role="AddressOfOtel" EntitySet="AddressOfOtel" />
       <End Role="Otel" EntitySet="Otel" />
     </AssociationSet>
-    <AssociationSet Name="FK__Price__ValueID__3A81B327" Association="Self.FK__Price__ValueID__3A81B327">
+    <AssociationSet Name="FK__Price__CurrencyI__47DBAE45" Association="Self.FK__Price__CurrencyI__47DBAE45">
       <End Role="Currency" EntitySet="Currency" />
       <End Role="Price" EntitySet="Price" />
     </AssociationSet>
@@ -421,10 +401,6 @@
     <AssociationSet Name="FK_Ticket_Otel" Association="Self.FK_Ticket_Otel">
       <End Role="Otel" EntitySet="Otel" />
       <End Role="Order" EntitySet="Order" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_Discount" Association="Self.FK_User_Discount">
-      <End Role="Discount" EntitySet="Discount" />
-      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -37,14 +37,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Discount">
-      <EntityTypeMapping TypeName="OtelModel.Discount">
-        <MappingFragment StoreEntitySet="Discount">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Discription">
       <EntityTypeMapping TypeName="OtelModel.Discription">
         <MappingFragment StoreEntitySet="Discription">
@@ -106,6 +98,7 @@
         <MappingFragment StoreEntitySet="Role">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -141,7 +134,6 @@
           <ScalarProperty Name="PassportID" ColumnName="PassportID" />
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
           <ScalarProperty Name="Avatar" ColumnName="Avatar" />
-          <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
