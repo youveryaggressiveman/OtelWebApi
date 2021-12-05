@@ -104,6 +104,9 @@ namespace OtelApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            db.Role.Attach(user.Role);
+            db.Country.Attach(user.Country);
+
             db.User.Add(user);
             db.SaveChanges();
 
