@@ -92,7 +92,7 @@ namespace OtelApi.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(user);
         }
 
         // POST: api/Users
