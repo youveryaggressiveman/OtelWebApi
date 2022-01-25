@@ -65,7 +65,9 @@ namespace OtelApi.Controllers
             {
                 foreach (var r in item.Room)
                 {
-                        r.Price.Currency = null;
+                        r.Price = null;
+                        r.TypeRoom = null;
+
                         roomList.Add(r);
                 }
 
