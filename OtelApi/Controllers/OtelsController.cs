@@ -30,7 +30,7 @@ namespace OtelApi.Controllers
             var otel = (from o in db.Otel
                         join r in db.Order on o.ID equals r.OtelID
                         where r.ID == id
-                        select o).Distinct();
+                        select o).FirstOrDefault();
 
             if (otel == null)
             {

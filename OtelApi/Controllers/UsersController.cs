@@ -61,7 +61,7 @@ namespace OtelApi.Controllers
 
             var roomList = new List<Room>();
 
-            foreach (var item in user.Order)
+            foreach (var item in user?.Order)
             {
                 foreach (var r in item.Room)
                 {
@@ -76,10 +76,12 @@ namespace OtelApi.Controllers
                 roomList = new List<Room>();
             }
 
+            db.User.Attach(user);
             db.Entry(user).State = EntityState.Modified;
 
             try
             {
+                
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
