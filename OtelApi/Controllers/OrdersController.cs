@@ -113,6 +113,8 @@ namespace OtelApi.Controllers
             try
             {
                 db.SaveChanges();
+
+                db.Entry(order).GetDatabaseValues();
             }
             catch (DbUpdateException)
             {
