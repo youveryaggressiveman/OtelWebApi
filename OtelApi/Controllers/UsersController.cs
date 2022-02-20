@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -65,10 +66,10 @@ namespace OtelApi.Controllers
             {
                 foreach (var r in item.Room)
                 {
-                        r.Price = null;
-                        r.TypeRoom = null;
+                    r.Price = null;
+                    r.TypeRoom = null;
 
-                        roomList.Add(r);
+                    roomList.Add(r);
                 }
 
                 item.Room = roomList;
@@ -76,8 +77,7 @@ namespace OtelApi.Controllers
                 roomList = new List<Room>();
             }
 
-            db.User.Attach(user);
-            db.Entry(user).State = EntityState.Modified;
+            db.User.AddOrUpdate(user);
 
             try
             {
